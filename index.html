@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f2ed" />
+    <title>SOLE — Sneakers sélectionnées</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="SOLE, accueil">SOLE<span>.</span></a>
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        <a class="active" href="#catalogue" data-nav-category="Tous">Nouveautés</a>
+        <a href="#catalogue" data-nav-category="Lifestyle">Lifestyle</a>
+        <a href="#catalogue" data-nav-category="Running">Running</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="searchToggle" type="button" aria-label="Ouvrir la recherche" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+        </button>
+        <button class="icon-button cart-button" id="cartToggle" type="button" aria-label="Ouvrir le panier">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20.5 8H7"></path><circle cx="9.5" cy="20" r="1"></circle><circle cx="17.5" cy="20" r="1"></circle></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">ÉDITION AUTOMNE — 2026</p>
+          <h1 id="heroTitle">Trouve ta paire.</h1>
+          <p>Des silhouettes choisies pour marcher, courir et vivre la ville.</p>
+          <a class="primary-button" href="#catalogue">Voir la sélection <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-visual" aria-label="Sélection de sneakers">
+          <div class="hero-card hero-card-main">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=88" alt="Sneaker rouge avec semelle blanche" />
+          </div>
+          <div class="hero-card hero-card-accent">
+            <img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?auto=format&fit=crop&w=700&q=88" alt="Sneaker blanche" />
+          </div>
+        </div>
+      </section>
+
+      <section class="catalogue" id="catalogue" aria-labelledby="catalogueTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SÉLECTION DU MOMENT</p>
+            <h2 id="catalogueTitle">Nouveautés</h2>
+          </div>
+          <p id="resultCount" class="result-count" aria-live="polite"></p>
+        </div>
+
+        <div class="search-panel" id="searchPanel" hidden>
+          <label for="searchInput">Rechercher une paire</label>
+          <input id="searchInput" type="search" placeholder="Nom, marque ou catégorie..." autocomplete="off" />
+        </div>
+
+        <div class="filters" aria-label="Filtres du catalogue">
+          <button class="filter-chip active" type="button" data-category="Tous" aria-pressed="true">Tous</button>
+          <button class="filter-chip" type="button" data-category="Lifestyle" aria-pressed="false">Lifestyle</button>
+          <button class="filter-chip" type="button" data-category="Running" aria-pressed="false">Running</button>
+          <button class="filter-chip" type="button" data-category="Skate" aria-pressed="false">Skate</button>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>Aucune paire ne correspond à cette recherche.</p>
+      </section>
+    </main>
+
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-labelledby="cartTitle" inert>
+      <div class="drawer-header">
+        <h2 id="cartTitle">Ton panier</h2>
+        <button class="icon-button" id="cartClose" type="button" aria-label="Fermer le panier">×</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer" id="cartFooter" hidden>
+        <div class="cart-total"><span>Total</span><strong id="cartTotal">0 €</strong></div>
+        <button class="checkout-button" type="button" id="checkoutButton">Continuer la commande</button>
+      </div>
+    </aside>
+    <div class="overlay" id="overlay" hidden></div>
+
+    <dialog class="product-dialog" id="productDialog" aria-labelledby="dialogTitle">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="Fermer">×</button>
+      <div id="dialogContent"></div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
